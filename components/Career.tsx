@@ -653,7 +653,7 @@ export default function Career() {
         )}
 
         {tab === 'tools' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s' }}>
+          <div className="tools-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s' }}>
 
             <div className="glass" style={{ borderRadius: '14px', padding: '32px' }}>
               <div className="corner corner-tl" /><div className="corner corner-br" />
@@ -760,6 +760,7 @@ export default function Career() {
       <style>{`
         @media (max-width: 768px) {
           .company-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .tools-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
