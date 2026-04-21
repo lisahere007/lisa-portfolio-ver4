@@ -157,3 +157,20 @@ export default function Personality() {
               <div key={trait.tag} className="glass" style={{ borderRadius: '12px', padding: '18px 20px', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.5s ease ${0.3 + i * 0.08}s` }}>
                 <div className="corner corner-tl" />
                 <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', color: 'var(--text-dim)', letterSpacing: '0.12em', marginBottom: '7px' }}>{trait.tag}</div>
+                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '4px' }}>{t(trait.en, trait.kr)}</div>
+                <div style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--text-dim)', lineHeight: 1.6 }}>{t(trait.desc_en, trait.desc_kr)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+          .personality-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  )
+}
