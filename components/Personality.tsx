@@ -156,4 +156,4 @@ export default function Personality() {
             ].map((trait, i) => (
               <div key={trait.tag} className="glass" style={{ borderRadius: '12px', padding: '18px 20px', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.5s ease ${0.3 + i * 0.08}s` }}>
                 <div className="corner corner-tl" />
-                <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', color: 'var(--
+                <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', color: 'var(--text-dim)', letterSpacing: '0.12em', marginBottom: '7px' }}>{trait.tag}</div>
