@@ -50,24 +50,14 @@ export default function About() {
           transform: visible ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.6s ease',
         }}>
-          <div className="sys-tag" style={{ marginBottom: '16px' }}>
-            {t('About', '소개')}
-          </div>
+          <div className="sys-tag" style={{ marginBottom: '16px' }}>{t('About', '소개')}</div>
           <h2 style={{
-            fontSize: 'clamp(32px,4vw,56px)',
-            fontWeight: 300,
-            color: 'var(--text-primary)',
-            letterSpacing: '-0.03em',
-            marginBottom: '16px',
+            fontSize: 'clamp(32px,4vw,56px)', fontWeight: 300,
+            color: 'var(--text-primary)', letterSpacing: '-0.03em', marginBottom: '16px',
           }}>
             {t('Who is Lisa?', '리사는 누구인가?')}
           </h2>
-          <p style={{
-            fontSize: '16px',
-            color: 'var(--text-muted)',
-            lineHeight: 1.9,
-            maxWidth: '600px',
-          }}>
+          <p style={{ fontSize: '16px', color: 'var(--text-muted)', lineHeight: 1.9, maxWidth: '600px' }}>
             {t(
               '6-year IT Project Manager with end-to-end experience from service planning, system design, development collaboration to operational stability.',
               '서비스 기획, 시스템 설계, 개발 협업 및 운영 안정화까지 End-to-End로 수행해온 6년 차 IT 프로젝트 매니저입니다.'
@@ -75,21 +65,12 @@ export default function About() {
           </p>
         </div>
 
-        <div style={{
-          opacity: visible ? 1 : 0,
-          transition: 'all 0.6s ease 0.2s',
-        }}>
-          <div className="sys-tag" style={{ marginBottom: '32px' }}>
-            {t('Timeline', '타임라인')}
-          </div>
+        <div style={{ opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s' }}>
+          <div className="sys-tag" style={{ marginBottom: '32px' }}>{t('Timeline', '타임라인')}</div>
 
           <div style={{ position: 'relative' }}>
-            <div style={{
-              position: 'absolute',
-              left: '80px',
-              top: 0,
-              bottom: 0,
-              width: '0.5px',
+            <div className="timeline-line" style={{
+              position: 'absolute', left: '80px', top: 0, bottom: 0, width: '0.5px',
               background: 'linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent)',
             }} />
 
@@ -110,31 +91,20 @@ export default function About() {
               >
                 <div style={{ textAlign: 'right', paddingTop: '16px', paddingRight: '16px', position: 'relative' }}>
                   <div style={{
-                    fontFamily: 'var(--mono)',
-                    fontSize: '13px',
-                    fontWeight: 500,
+                    fontFamily: 'var(--mono)', fontSize: '13px', fontWeight: 500,
                     color: activeIdx === i ? 'var(--accent)' : 'var(--text-primary)',
                     transition: 'color 0.3s',
                   }}>
                     {item.year}
                   </div>
                   {item.age && (
-                    <div style={{
-                      fontFamily: 'var(--mono)',
-                      fontSize: '10px',
-                      color: 'var(--text-dim)',
-                      marginTop: '2px',
-                    }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: '10px', color: 'var(--text-dim)', marginTop: '2px' }}>
                       {lang === 'en' ? `Age ${item.age}` : `${item.age}살`}
                     </div>
                   )}
                   <div style={{
-                    position: 'absolute',
-                    right: '-5px',
-                    top: '20px',
-                    width: '9px',
-                    height: '9px',
-                    borderRadius: '50%',
+                    position: 'absolute', right: '-5px', top: '20px',
+                    width: '9px', height: '9px', borderRadius: '50%',
                     background: activeIdx === i ? 'var(--accent)' : 'var(--border)',
                     border: `2px solid ${activeIdx === i ? 'var(--accent-soft)' : 'var(--bg)'}`,
                     transition: 'all 0.3s',
@@ -143,9 +113,7 @@ export default function About() {
                 </div>
 
                 <div className="glass" style={{
-                  borderRadius: '10px',
-                  padding: '14px 20px',
-                  marginBottom: '4px',
+                  borderRadius: '10px', padding: '14px 20px', marginBottom: '4px',
                   background: activeIdx === i ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.3)',
                   transition: 'all 0.3s',
                 }}>
@@ -163,6 +131,18 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .timeline-line { left: 16px !important; }
+        }
+        @media (max-width: 768px) {
+          [style*="gridTemplateColumns: '80px 1fr'"] {
+            grid-template-columns: 60px 1fr !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

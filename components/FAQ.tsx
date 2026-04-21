@@ -38,7 +38,7 @@ const faqs = [
     a_en: 'Turning complex, ambiguous requirements into structured, executable systems — and carrying them all the way through to operational stability. I connect planning, development, QA, and operations as one continuous flow.',
     a_kr: '복잡하고 모호한 요구사항을 구조화된 실행 가능한 시스템으로 바꾸고, 운영 안정화까지 끝까지 책임지는 것입니다. 기획, 개발, QA, 운영을 하나의 연속된 흐름으로 연결합니다.',
   },
-{
+  {
     q_en: 'Are you available for freelance or consulting?',
     q_kr: '프리랜서나 컨설팅도 가능하신가요?',
     a_en: 'Depending on the scope and timeline, yes. Feel free to reach out!',
@@ -82,44 +82,30 @@ export default function FAQ() {
         }}>
           <div className="sys-tag" style={{ marginBottom: '16px' }}>FAQ</div>
           <h2 style={{
-            fontSize: 'clamp(32px,4vw,56px)',
-            fontWeight: 300,
-            color: 'var(--text-primary)',
-            letterSpacing: '-0.03em',
+            fontSize: 'clamp(32px,4vw,56px)', fontWeight: 300,
+            color: 'var(--text-primary)', letterSpacing: '-0.03em',
           }}>
             {t('Frequently Asked', '자주 묻는 질문')}
           </h2>
         </div>
 
         <div style={{
-          maxWidth: '780px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '8px',
-          opacity: visible ? 1 : 0,
-          transition: 'all 0.6s ease 0.2s',
+          maxWidth: '780px', width: '100%',
+          display: 'flex', flexDirection: 'column', gap: '8px',
+          opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s',
         }}>
           {faqs.map((faq, i) => (
-            <div
-              key={i}
-              className="glass"
-              style={{
-                borderRadius: '12px',
-                overflow: 'hidden',
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(16px)',
-                transition: `all 0.5s ease ${i * 0.06}s`,
-              }}
-            >
+            <div key={i} className="glass" style={{
+              borderRadius: '12px', overflow: 'hidden',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'translateY(0)' : 'translateY(16px)',
+              transition: `all 0.5s ease ${i * 0.06}s`,
+            }}>
               <div
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
                 style={{
-                  padding: '20px 24px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  gap: '16px',
+                  padding: '20px 24px', cursor: 'pointer',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px',
                   background: openIdx === i ? 'rgba(255,255,255,0.6)' : 'transparent',
                   transition: 'background 0.3s',
                 }}
@@ -128,41 +114,27 @@ export default function FAQ() {
                   fontSize: '15px',
                   fontWeight: openIdx === i ? 500 : 400,
                   color: openIdx === i ? 'var(--text-primary)' : 'var(--text-muted)',
-                  transition: 'all 0.3s',
-                  lineHeight: 1.5,
+                  transition: 'all 0.3s', lineHeight: 1.5,
                 }}>
                   {t(faq.q_en, faq.q_kr)}
                 </div>
                 <div style={{
-                  fontFamily: 'var(--mono)',
-                  fontSize: '16px',
-                  color: 'var(--text-dim)',
+                  fontFamily: 'var(--mono)', fontSize: '16px', color: 'var(--text-dim)',
                   transform: openIdx === i ? 'rotate(45deg)' : 'rotate(0)',
-                  transition: 'transform 0.3s',
-                  flexShrink: 0,
-                }}>
-                  +
-                </div>
+                  transition: 'transform 0.3s', flexShrink: 0,
+                }}>+</div>
               </div>
 
-              <div style={{
-                maxHeight: openIdx === i ? '300px' : '0',
-                overflow: 'hidden',
-                transition: 'max-height 0.4s ease',
-              }}>
-                <div style={{
-                  padding: '0 24px 20px',
-                  borderTop: '0.5px solid var(--border)',
-                  paddingTop: '16px',
-                }}>
-<p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.9, fontFamily: 'var(--mono)', marginBottom: (faq as any).link ? '12px' : '0' }}>
-                  {t(faq.a_en, faq.a_kr)}
-                </p>
-                {(faq as any).link && (
-                  <a href="https://www.linkedin.com/in/hyein-kim-95129736a/" target="_blank" rel="noreferrer" style={{ fontFamily: 'var(--mono)', fontSize: '11px', padding: '6px 16px', borderRadius: '5px', background: 'rgba(255,255,255,0.4)', border: '0.5px solid var(--border)', color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-block', letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all 0.2s' }}>
-                    LinkedIn →
-                  </a>
-                )}
+              <div style={{ maxHeight: openIdx === i ? '300px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
+                <div style={{ padding: '0 24px 20px', borderTop: '0.5px solid var(--border)', paddingTop: '16px' }}>
+                  <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.9, fontFamily: 'var(--mono)', marginBottom: (faq as any).link ? '12px' : '0' }}>
+                    {t(faq.a_en, faq.a_kr)}
+                  </p>
+                  {(faq as any).link && (
+                    <a href="https://www.linkedin.com/in/hyein-kim-95129736a/" target="_blank" rel="noreferrer" style={{ fontFamily: 'var(--mono)', fontSize: '11px', padding: '6px 16px', borderRadius: '5px', background: 'rgba(255,255,255,0.4)', border: '0.5px solid var(--border)', color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-block', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      LinkedIn →
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

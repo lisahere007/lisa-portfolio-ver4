@@ -66,10 +66,7 @@ export default function Personality() {
 
   useEffect(() => {
     if (!visible || animDone) return
-    if (shownCount >= ANIMATE_COUNT) {
-      setAnimDone(true)
-      return
-    }
+    if (shownCount >= ANIMATE_COUNT) { setAnimDone(true); return }
 
     const current = conversation[shownCount]
     const delay = shownCount === 0 ? 600 : current.role === 'user' ? 400 : 300
@@ -83,14 +80,8 @@ export default function Personality() {
         setTypingText('')
         let i = 0
         const typeInterval = setInterval(() => {
-          if (i < text.length) {
-            setTypingText(text.slice(0, i + 1))
-            i++
-          } else {
-            clearInterval(typeInterval)
-            setIsTyping(false)
-            setShownCount(c => c + 1)
-          }
+          if (i < text.length) { setTypingText(text.slice(0, i + 1)); i++ }
+          else { clearInterval(typeInterval); setIsTyping(false); setShownCount(c => c + 1) }
         }, 24)
         return () => clearInterval(typeInterval)
       }
@@ -100,7 +91,6 @@ export default function Personality() {
   }, [visible, shownCount, animDone, lang])
 
   const t = (en: string, kr: string) => lang === 'en' ? en : kr
-
   const visibleMessages = animDone ? conversation : conversation.slice(0, shownCount)
 
   return (
@@ -121,7 +111,7 @@ export default function Personality() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '24px', alignItems: 'start', opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s' }}>
+        <div className="personality-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '24px', alignItems: 'start', opacity: visible ? 1 : 0, transition: 'all 0.6s ease 0.2s' }}>
 
           <div className="glass" style={{ borderRadius: '16px', overflow: 'hidden' }}>
             <div className="corner corner-tl" />
@@ -131,7 +121,6 @@ export default function Personality() {
                 AI_INSIGHT.sys · {t('analyzing Lisa...', '리사 분석 중...')}
               </span>
             </div>
-
             <div style={{ padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {visibleMessages.map((msg, i) => (
                 <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start', animation: 'fadeUp 0.3s ease forwards' }}>
@@ -145,15 +134,13 @@ export default function Personality() {
                   </div>
                 </div>
               ))}
-
               {isTyping && (
                 <div style={{ display: 'flex', justifyContent: 'flex-start', animation: 'fadeUp 0.3s ease forwards' }}>
                   <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--accent-soft)', border: '0.5px solid rgba(26,79,216,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '8px', flexShrink: 0, marginTop: '2px' }}>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: '8px', color: 'var(--accent)' }}>AI</span>
                   </div>
                   <div style={{ maxWidth: '80%', padding: '10px 14px', borderRadius: '12px 12px 12px 2px', background: 'rgba(255,255,255,0.6)', border: '0.5px solid var(--border)', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.7, fontFamily: 'var(--mono)' }}>
-                    {typingText}
-                    <span className="blink-cursor" />
+                    {typingText}<span className="blink-cursor" />
                   </div>
                 </div>
               )}
@@ -169,21 +156,4 @@ export default function Personality() {
             ].map((trait, i) => (
               <div key={trait.tag} className="glass" style={{ borderRadius: '12px', padding: '18px 20px', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transition: `all 0.5s ease ${0.3 + i * 0.08}s` }}>
                 <div className="corner corner-tl" />
-                <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', color: 'var(--text-dim)', letterSpacing: '0.12em', marginBottom: '7px' }}>{trait.tag}</div>
-                <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '4px' }}>{t(trait.en, trait.kr)}</div>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--text-dim)', lineHeight: 1.6 }}>{t(trait.desc_en, trait.desc_kr)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-    </section>
-  )
-}
+                <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', color: 'var(--

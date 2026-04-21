@@ -49,16 +49,16 @@ export default function Contact() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '900px' }}>
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '900px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 
             <div className="glass" style={{ borderRadius: '14px', padding: '28px', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0s' }}>
               <div className="corner corner-tl" /><div className="corner corner-br" />
               <div className="sys-tag" style={{ marginBottom: '14px', fontSize: '10px' }}>Email</div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--text-dim)', marginBottom: '6px' }}>{t('Primary Channel', '주요 채널')}</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: '15px', color: 'var(--text-primary)' }}>sunday24vibe@gmail.com</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: '14px', color: 'var(--text-primary)' }}>sunday24vibe@gmail.com</div>
                 </div>
                 <button onClick={copyEmail} style={{ fontFamily: 'var(--mono)', fontSize: '11px', padding: '7px 16px', borderRadius: '5px', whiteSpace: 'nowrap', cursor: 'pointer', background: copied ? 'rgba(15,138,90,0.08)' : 'rgba(255,255,255,0.4)', border: copied ? '0.5px solid rgba(15,138,90,0.35)' : '0.5px solid var(--border)', color: copied ? 'var(--green)' : 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'all 0.2s' }}>
                   {copied ? t('Copied', '복사됨') : t('Copy', '복사')}
@@ -81,7 +81,7 @@ export default function Contact() {
             <div className="glass" style={{ borderRadius: '14px', padding: '28px', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.24s' }}>
               <div className="corner corner-tl" /><div className="corner corner-br" />
               <div className="sys-tag" style={{ marginBottom: '14px', fontSize: '10px' }}>LinkedIn</div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--text-dim)', marginBottom: '6px' }}>Hyein Kim</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--text-muted)' }}>linkedin.com/in/hyein-kim-95129736a</div>
@@ -129,6 +129,12 @@ export default function Contact() {
           </div>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+        }
+      `}</style>
     </section>
   )
 }

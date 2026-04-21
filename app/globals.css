@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@300;400;500;600;700&display=swap');
-
+ 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 :root {
   --bg: #eef2f8;
   --surface: rgba(255,255,255,0.55);
@@ -21,7 +21,7 @@
   --mono: 'DM Mono', monospace;
   --sans: 'Syne', sans-serif;
 }
-
+ 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -31,7 +31,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-
+ 
 .bg-grid {
   position: fixed;
   inset: 0;
@@ -42,7 +42,7 @@ body {
     linear-gradient(90deg, rgba(100,150,220,0.06) 1px, transparent 1px);
   background-size: 56px 56px;
 }
-
+ 
 .scan-line {
   position: fixed;
   left: 0;
@@ -53,12 +53,12 @@ body {
   z-index: 1;
   pointer-events: none;
 }
-
+ 
 @keyframes scanMove {
   0% { top: -2px; }
   100% { top: 100vh; }
 }
-
+ 
 .glass {
   background: var(--surface);
   border: 0.5px solid var(--border);
@@ -66,7 +66,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   position: relative;
 }
-
+ 
 .glass::before {
   content: '';
   position: absolute;
@@ -76,13 +76,13 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.88), transparent);
 }
-
+ 
 .corner { position: absolute; width: 14px; height: 14px; }
 .corner-tl { top: 8px; left: 8px; border-top: 1px solid var(--border-strong); border-left: 1px solid var(--border-strong); }
 .corner-tr { top: 8px; right: 8px; border-top: 1px solid var(--border-strong); border-right: 1px solid var(--border-strong); }
 .corner-bl { bottom: 8px; left: 8px; border-bottom: 1px solid var(--border-strong); border-left: 1px solid var(--border-strong); }
 .corner-br { bottom: 8px; right: 8px; border-bottom: 1px solid var(--border-strong); border-right: 1px solid var(--border-strong); }
-
+ 
 .sys-tag {
   font-family: var(--mono);
   font-size: 11px;
@@ -93,7 +93,7 @@ body {
   align-items: center;
   gap: 8px;
 }
-
+ 
 .sys-tag::before {
   content: '';
   display: inline-block;
@@ -101,7 +101,7 @@ body {
   height: 0.5px;
   background: var(--text-dim);
 }
-
+ 
 .btn-primary {
   font-family: var(--mono);
   font-size: 12px;
@@ -118,7 +118,7 @@ body {
   text-decoration: none;
 }
 .btn-primary:hover { background: rgba(255,255,255,1); }
-
+ 
 .btn-ghost {
   font-family: var(--mono);
   font-size: 12px;
@@ -136,10 +136,10 @@ body {
   backdrop-filter: blur(12px);
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.25); }
-
+ 
 .section-wrap { padding: 120px 0; position: relative; z-index: 2; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-
+ 
 .live-dot {
   width: 6px;
   height: 6px;
@@ -149,12 +149,12 @@ body {
   animation: livePulse 2s ease-in-out infinite;
   display: inline-block;
 }
-
+ 
 @keyframes livePulse {
   0%, 100% { box-shadow: 0 0 8px var(--green-glow); }
   50% { box-shadow: 0 0 2px rgba(15,138,90,0.1); }
 }
-
+ 
 .blink-cursor {
   display: inline-block;
   width: 2px;
@@ -164,12 +164,20 @@ body {
   vertical-align: middle;
   animation: blink 1s step-end infinite;
 }
-
+ 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
+ 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+ 
+/* ─── Mobile Responsive ─────────────────────────── */
+@media (max-width: 768px) {
+  .section-wrap { padding: 80px 0; }
+  .container { padding: 0 20px; }
+ 
+  .bg-grid { background-size: 32px 32px; }
+}

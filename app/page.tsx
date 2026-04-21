@@ -19,8 +19,9 @@ export default function Home() {
       <footer style={{
         position: 'relative', zIndex: 2,
         borderTop: '0.5px solid rgba(160,185,225,0.4)',
-        padding: '24px 40px',
+        padding: '24px 20px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        flexWrap: 'wrap', gap: '8px',
       }}>
         <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '12px', color: '#6a85b0', letterSpacing: '0.1em' }}>
           Lisa · IT Project Manager · © 2026
