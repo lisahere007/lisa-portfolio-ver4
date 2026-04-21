@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 
 const timeline = [
   { year: '1997', age: '', event_en: 'Born', event_kr: '출생' },
-  { year: '2002', age: '6', event_en: 'FIFA World Cup · Age 6', event_kr: '붉은악마 월드컵 · 6살' },
+  { year: '2002', age: '6', event_en: '2002 World Cup · Age 6', event_kr: '붉은악마 월드컵 · 6살' },
   { year: '2010', age: '14', event_en: 'Middle school → Singapore', event_kr: '중학교 입학 → 싱가폴 시작' },
   { year: '2016', age: '20', event_en: 'University · Jeju return · Singapore exchange', event_kr: '제주복귀 · 대학교 입학 → 싱가폴 교환학생' },
   { year: '2018', age: '22', event_en: 'Graduated · Vietnam · Cargorush begins', event_kr: '졸업 · 베트남 · Cargorush 시작' },

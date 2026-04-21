@@ -36,7 +36,7 @@ export default function Nav() {
         borderBottom: scrolled ? '0.5px solid rgba(160,185,225,0.5)' : 'none',
         backdropFilter: scrolled ? 'blur(24px)' : 'none',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 40px', zIndex: 100,
+        padding: '0 20px', zIndex: 100,
         transition: 'all 0.4s ease',
       }}>
         <a href="#" style={{
@@ -94,32 +94,23 @@ export default function Nav() {
 
         {/* 모바일 햄버거 */}
         <button
-          className="nav-mobile"
+          className="nav-mobile-btn"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '5px', padding: '4px' }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', flexDirection: 'column', gap: '5px', alignItems: 'center', justifyContent: 'center' }}
         >
-          {[0, 1, 2].map(i => (
-            <span key={i} style={{
-              display: 'block', width: '22px', height: '1.5px',
-              background: scrolled ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)',
-              transition: 'all 0.3s',
-              transform: menuOpen
-                ? i === 0 ? 'rotate(45deg) translate(4.5px, 4.5px)'
-                  : i === 1 ? 'scaleX(0)'
-                  : 'rotate(-45deg) translate(4.5px, -4.5px)'
-                : 'none',
-            }} />
-          ))}
+          <span style={{ display: 'block', width: '22px', height: '1.5px', background: scrolled ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)', transition: 'all 0.3s', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+          <span style={{ display: 'block', width: '22px', height: '1.5px', background: scrolled ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)', transition: 'all 0.3s', transform: menuOpen ? 'scaleX(0)' : 'none', margin: '4px 0' }} />
+          <span style={{ display: 'block', width: '22px', height: '1.5px', background: scrolled ? 'var(--text-muted)' : 'rgba(255,255,255,0.85)', transition: 'all 0.3s', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
         </button>
       </nav>
 
       {/* 모바일 드롭다운 */}
       {menuOpen && (
-        <div className="nav-mobile" style={{
+        <div className="nav-mobile-menu" style={{
           position: 'fixed', top: '58px', left: 0, right: 0, zIndex: 99,
           background: 'rgba(238,242,248,0.97)', backdropFilter: 'blur(24px)',
           borderBottom: '0.5px solid rgba(160,185,225,0.5)',
-          padding: '16px 20px 24px',
+          padding: '8px 20px 24px',
         }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {links.map(l => (
@@ -132,7 +123,7 @@ export default function Nav() {
               </a>
             ))}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '20px', paddingTop: '16px', borderTop: '0.5px solid rgba(160,185,225,0.3)' }}>
             <div style={{
               display: 'flex', background: 'rgba(255,255,255,0.35)',
               border: '0.5px solid rgba(160,185,225,0.55)', borderRadius: '4px', overflow: 'hidden',
@@ -162,11 +153,12 @@ export default function Nav() {
 
       <style>{`
         .nav-desktop { display: flex; }
-        .nav-mobile { display: none; }
+        .nav-mobile-btn { display: none; }
+        .nav-mobile-menu { display: none; }
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
-          .nav-mobile { display: flex !important; }
-          nav { padding: 0 20px !important; }
+          .nav-mobile-btn { display: flex !important; flex-direction: column; gap: 5px; }
+          .nav-mobile-menu { display: block !important; }
         }
       `}</style>
     </>
